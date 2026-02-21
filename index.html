@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kronthal Advisory | UX Research & Product Strategy for AI Companies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #1a1a1a;
+        }
+
+        .problem-section {
+            background: #f8f9fa;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .problem-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .service-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .why-different {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .why-different h2 {
+            color: white;
+        }
+
+        .credentials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .credential-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .credential-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .credential-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .experience-highlights {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 12px;
+        }
+
+        .experience-highlights h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .experience-highlights ul {
+            list-style: none;
+        }
+
+        .experience-highlights li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .experience-highlights li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 2px solid white;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+            opacity: 0.9;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            margin-bottom: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: white;
+            color: #1a1a1a;
+        }
+
+        .contact-form textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: 3px solid rgba(255,255,255,0.5);
+        }
+
+        .contact-form button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .form-success {
+            display: none;
+            font-size: 1.3rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Build AI Products People Actually Want to Use</h1>
+            <p class="subtitle">Expert UX research and product strategy for ambitious AI companies</p>
+            <a href="#contact" class="cta-button">Let's Talk About Your Product</a>
+        </div>
+    </section>
+
+    <section class="section problem-section">
+        <h2>The AI Product Challenge</h2>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <h3>Moving Too Fast?</h3>
+                <p>AI capabilities evolve rapidly, but without user research, you risk building impressive technology that solves the wrong problems—or creates new ones users don't want.</p>
+            </div>
+            <div class="problem-card">
+                <h3>Drowning in Competition?</h3>
+                <p>The AI space is crowded. Technical features alone won't differentiate you. Understanding what users truly value and delivering exceptional experiences is how you win.</p>
+            </div>
+            <div class="problem-card">
+                <h3>Unsure What to Build Next?</h3>
+                <p>Limited resources mean every product decision matters. Data-driven insights help you prioritize ruthlessly and invest in features that drive real business outcomes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>How I Help AI Companies Win</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Strategic Research</h3>
+                <p>Uncover the insights that shape your product roadmap and go-to-market strategy</p>
+                <ul>
+                    <li>User segmentation and behavioral modeling</li>
+                    <li>Concept testing and validation</li>
+                    <li>Competitive differentiation research</li>
+                    <li>Large-scale surveys and diary studies</li>
+                    <li>Early-stage opportunity exploration</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>Product Experience Research</h3>
+                <p>Optimize your AI product's usability, trust, and adoption</p>
+                <ul>
+                    <li>UX evaluation and usability testing</li>
+                    <li>Trust and safety perception research</li>
+                    <li>Onboarding and activation optimization</li>
+                    <li>Feature design and validation</li>
+                    <li>Accessibility and inclusive design</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>Team & Culture Building</h3>
+                <p>Embed customer-centricity into your organization's DNA</p>
+                <ul>
+                    <li>Research operations setup and optimization</li>
+                    <li>Team hiring and capability development</li>
+                    <li>Cross-functional collaboration frameworks</li>
+                    <li>Executive stakeholder engagement</li>
+                    <li>Customer empathy programs for engineers</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section why-different">
+        <h2>Why This Is Different</h2>
+        <div class="credentials">
+            <div class="credential-item">
+                <div class="credential-number">15+</div>
+                <div class="credential-text">Years Leading Research at Scale</div>
+            </div>
+            <div class="credential-item">
+                <div class="credential-number">5</div>
+                <div class="credential-text">Industry-Leading Tech Companies</div>
+            </div>
+            <div class="credential-item">
+                <div class="credential-number">250+</div>
+                <div class="credential-text">Cities Impacted Worldwide</div>
+            </div>
+            <div class="credential-item">
+                <div class="credential-number">200%</div>
+                <div class="credential-text">Budget Growth Through Impact</div>
+            </div>
+        </div>
+
+        <div class="experience-highlights">
+            <h3>Battle-Tested Expertise You Can Trust</h3>
+            <ul>
+                <li>Established UX research practices from scratch at Gametime, Lime, and rebuilt at Yahoo! — I know how to start fast and scale smart</li>
+                <li>Partnered directly with CEOs and C-suite leaders at multiple companies to integrate customer insights into strategic planning</li>
+                <li>Led research that influenced hardware and software decisions across rider experiences, new mobility form factors, accessibility improvements, and business platforms</li>
+                <li>Created customer segmentation and behavioral models combining quantitative surveys with qualitative depth</li>
+                <li>Pioneered company-wide empathy programs achieving 85% engineer participation — because customer understanding can't live in one team</li>
+                <li>Built high-performing teams from the ground up with frameworks for prioritization, career development, and research operations</li>
+                <li>Delivered compelling insights that secured executive buy-in and budget increases even with extremely limited resources</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <h2>Ready to Build Products People Love?</h2>
+        <p>Let's discuss how strategic research can accelerate your product decisions and market differentiation.</p>
+        <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpqjyjpn" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Your email">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required placeholder="How can I help?"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div class="form-success" id="form-success">
+            <p>Thanks for reaching out! I'll get back to you soon.</p>
+        </div>
+        <div class="contact-info">
+            <p>Michael Kronthal</p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/mkronthal" target="_blank">linkedin.com/in/mkronthal</a></p>
+        </div>
+    </section>
+    <script>
+        var form = document.getElementById('contact-form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(function(response) {
+                if (response.ok) {
+                    form.style.display = 'none';
+                    document.getElementById('form-success').style.display = 'block';
+                    form.reset();
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
+            }).catch(function() {
+                alert('Something went wrong. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>
