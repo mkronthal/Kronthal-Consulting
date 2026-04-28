@@ -257,11 +257,11 @@ footer {
 <div id="proof">
   <div class="container">
     <div class="proof-inner">
-      <span class="proof-co">Hinge Health</span><span class="proof-dot">·</span>
-      <span class="proof-co">Lime</span><span class="proof-dot">·</span>
       <span class="proof-co">Uber</span><span class="proof-dot">·</span>
       <span class="proof-co">Twitter</span><span class="proof-dot">·</span>
       <span class="proof-co">Yahoo</span><span class="proof-dot">·</span>
+      <span class="proof-co">Lime</span><span class="proof-dot">·</span>
+      <span class="proof-co">Hinge Health</span><span class="proof-dot">·</span>
       <span class="proof-co">Gametime</span>
     </div>
   </div>
@@ -381,7 +381,7 @@ footer {
       <div>
         <div class="fit-label fit-label--good">Great fit</div>
         <ul class="fit-items">
-          <li class="fit-item"><span class="fit-marker fit-marker--check">✓</span><span>Series B–D with product-market fit and a scaling trajectory</span></li>
+          <li class="fit-item"><span class="fit-marker fit-marker--check">✓</span><span>Series B–E with product-market fit and a scaling trajectory</span></li>
           <li class="fit-item"><span class="fit-marker fit-marker--check">✓</span><span>No existing research function — or one that needs to be rebuilt or elevated</span></li>
           <li class="fit-item"><span class="fit-marker fit-marker--check">✓</span><span>Complex, expert, or professional users (clinical, financial, technical, legal)</span></li>
           <li class="fit-item"><span class="fit-marker fit-marker--check">✓</span><span>Leadership that wants to be closer to customers but doesn't yet have the mechanism</span></li>
@@ -414,9 +414,9 @@ footer {
       <aside class="about-aside">
         <div class="about-name">Michael Kronthal</div>
         <ul class="about-roles">
-          <li class="about-role"><strong>Head of Research</strong><br>Hinge Health · Lime · Uber · Twitter · Yahoo · Gametime </li>
-          <li class="about-role"><strong>Founding Research Leader</strong><br>Lime · Gametime</li>
-          <li class="about-role"><strong>Scaled Research Practices </strong><br>Uber · Twitter · Yahoo</li>
+          <li class="about-role"><strong>Director, UX Research</strong><br>Gametime · Hinge Health · Lime</li>
+          <li class="about-role"><strong>Director, UX Research</strong><br>Uber · Twitter</li>
+          <li class="about-role"><strong>Head of Global UX Research</strong><br>Yahoo</li>
           <li class="about-role"><strong>MA, Applied Anthropology</strong><br>American University</li>
           <li class="about-role"><strong>BA, Anthropology &amp; Sociology</strong><br>Washington &amp; Lee University</li>
         </ul>
@@ -434,7 +434,7 @@ footer {
       <h3>Thank you.</h3>
       <p>I'll be in touch within two business days.</p>
     </div>
-    <form id="contact-form" class="contact-form" onsubmit="handleSubmit(event)">
+    <form id="contact-form" class="contact-form" action="https://formspree.io/f/xpqjyjpn" method="POST">
       <div class="field">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required>
@@ -467,13 +467,6 @@ footer {
 </footer>
 
 <script>
-function handleSubmit(e) {
-  e.preventDefault();
-  document.getElementById('contact-form').style.display = 'none';
-  var s = document.getElementById('form-success');
-  s.style.display = 'block';
-}
-
 // Active nav on scroll
 var sections = ['track-record','about','contact'];
 var navLinks = document.querySelectorAll('.nav-links a');
