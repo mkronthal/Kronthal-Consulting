@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kronthal Research</title>
+<link rel="icon" href="logo-monogram.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600;8..60,700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:        #F2F4F7;
+  --paper-2:      #E8ECF1;
+  --paper-3:      #DDE2EA;
+  --linen:        #C9D0DB;
+  --ink:          #0E1524;
+  --ink-2:        #283244;
+  --ink-3:        #5C6678;
+  --ink-4:        #8892A3;
+  --navy:         #1A2B47;
+  --navy-deep:    #101C30;
+  --navy-soft:    #4A5A78;
+  --navy-wash:    #E6EAF0;
+  --steel:        #4F5563;
+  --oxblood:      #1A2B47;
+  --oxblood-deep: #101C30;
+  --oxblood-soft: #4A5A78;
+  --oxblood-wash: #E6EAF0;
+  --signal-ok:    #4A6B3A;
+  --signal-warn:  #A66A2C;
+  --signal-info:  #2E4E6B;
+  --font-serif:   'Source Serif 4', 'Georgia', serif;
+  --font-sans:    'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    'JetBrains Mono', 'SF Mono', monospace;
+  --page-max:     1120px;
+  --gutter:       clamp(1.25rem, 4vw, 3rem);
+  --ease-out:     cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-serif); font-size: 17px; line-height: 1.65; font-weight: 400; }
+
+.container { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--gutter); }
+.container--narrow { max-width: 960px; margin: 0 auto; padding: 0 var(--gutter); }
+.container--contact { max-width: 880px; margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Eyebrow */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--navy);
+  margin-bottom: 20px;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+}
+.nav-inner {
+  max-width: var(--page-max); margin: 0 auto; padding: 0 var(--gutter);
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.nav-logo { text-decoration: none; display: flex; align-items: center; gap: 14px; }
+.nav-logo img { height: 40px; width: auto; display: block; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-family: var(--font-sans); font-size: 14px;
+  color: var(--ink-3); text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 120ms var(--ease-out);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--ink); text-decoration: underline; text-decoration-color: var(--navy); text-decoration-thickness: 1px; text-underline-offset: 6px; }
+
+/* ── HERO ── */
+#hero { padding: 120px 0 96px; }
+.hero-h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.75rem, 4.5vw + 1rem, 5rem);
+  line-height: 1.04; letter-spacing: -0.025em; font-weight: 400;
+  color: var(--ink); max-width: 18ch; margin: 0 0 28px; text-wrap: balance;
+}
+.hero-h1 em { font-style: italic; color: var(--navy); }
+.hero-sub {
+  font-family: var(--font-serif); font-size: 22px; line-height: 1.5;
+  color: var(--ink-2); max-width: 52ch; margin: 0 0 16px;
+}
+.hero-kicker {
+  font-family: var(--font-serif); font-size: 18px; line-height: 1.5;
+  color: var(--ink-3); max-width: 48ch; margin: 0 0 40px; font-style: italic;
+}
+
+/* ── BUTTON ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-sans); font-weight: 500; letter-spacing: 0.01em;
+  font-size: 15px; padding: 14px 28px;
+  background: var(--navy); color: var(--paper);
+  border: 1px solid var(--navy); border-radius: 2px;
+  cursor: pointer; text-decoration: none;
+  transition: background 120ms var(--ease-out), border-color 120ms var(--ease-out);
+}
+.btn:hover { background: var(--navy-deep); border-color: var(--navy-deep); color: var(--paper); }
+
+/* ── PROOF BAR ── */
+#proof {
+  border-top: 1px solid var(--linen); border-bottom: 1px solid var(--linen);
+  padding: 28px 0; background: var(--paper-2);
+}
+.proof-inner { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; align-items: center; }
+.proof-co { font-family: var(--font-sans); font-size: 13px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.16em; }
+.proof-dot { color: var(--linen); }
+
+/* ── SECTIONS ── */
+.section { padding: 96px 0; }
+.section--alt { background: var(--paper-2); }
+
+.section-h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 2.4vw + 1rem, 3.25rem);
+  line-height: 1.1; font-weight: 400; letter-spacing: -0.02em;
+  color: var(--ink); margin: 0 0 16px; max-width: 18ch;
+}
+.section-lead {
+  font-family: var(--font-serif); font-size: 19px; line-height: 1.55;
+  color: var(--ink-3); max-width: 58ch; margin: 0 0 56px;
+}
+
+/* ── TRACK RECORD ── */
+.case {
+  display: grid; grid-template-columns: 180px 1fr 160px;
+  gap: 40px; padding: 36px 0; align-items: start;
+}
+.case + .case { border-top: 1px solid var(--linen); }
+.cases { border-top: 1px solid var(--ink); }
+.case-company { font-family: var(--font-sans); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+.case-stage { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+.case-headline { font-family: var(--font-serif); font-size: 26px; font-weight: 500; line-height: 1.25; color: var(--ink); margin: 0 0 14px; letter-spacing: -0.01em; }
+.case-body { font-family: var(--font-serif); font-size: 17px; line-height: 1.65; color: var(--ink-2); margin: 0; max-width: 62ch; }
+.case-metric { text-align: right; }
+.case-metric-num { font-family: var(--font-serif); font-size: 36px; font-weight: 400; color: var(--navy); line-height: 1; letter-spacing: -0.02em; display: block; }
+.case-metric-label { font-family: var(--font-sans); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-3); margin-top: 8px; display: block; }
+
+/* ── HOW I HELP ── */
+.offering { border-top: 1px solid var(--linen); padding: 36px 0; display: grid; grid-template-columns: 80px 1fr; gap: 32px; }
+.offering-num { font-family: var(--font-mono); font-size: 13px; color: var(--navy); letter-spacing: 0.04em; }
+.offering-title { font-family: var(--font-serif); font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 14px; max-width: 22ch; }
+.offering-body { font-family: var(--font-serif); font-size: 17px; line-height: 1.65; color: var(--ink-2); margin: 0 0 20px; max-width: 62ch; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag { font-family: var(--font-sans); font-size: 12px; padding: 5px 11px; border: 1px solid var(--linen); background: var(--paper); color: var(--ink-2); letter-spacing: 0.02em; }
+
+/* ── FIT ── */
+.fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+.fit-label { font-family: var(--font-sans); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 20px; }
+.fit-label--good { color: var(--signal-ok); }
+.fit-label--not { color: var(--ink-3); }
+.fit-items { list-style: none; }
+.fit-item { font-family: var(--font-serif); font-size: 17px; line-height: 1.55; color: var(--ink-2); padding: 14px 0; border-top: 1px solid var(--linen); display: flex; gap: 14px; }
+.fit-marker { flex-shrink: 0; font-family: var(--font-mono); font-size: 14px; }
+.fit-marker--check { color: var(--signal-ok); }
+.fit-marker--dash { color: var(--ink-3); }
+
+/* ── ABOUT ── */
+.about-grid { display: grid; grid-template-columns: 1fr 280px; gap: 56px; }
+.about-body p { font-family: var(--font-serif); font-size: 18px; line-height: 1.7; color: var(--ink-2); margin: 0 0 20px; }
+.about-pull { font-family: var(--font-serif); font-size: 22px; line-height: 1.45; color: var(--ink); margin: 28px 0 0; font-style: italic; font-weight: 400; max-width: 28ch; border-left: 2px solid var(--navy); padding-left: 20px; }
+.about-aside { border-top: 1px solid var(--ink); padding-top: 20px; }
+.about-name { font-family: var(--font-sans); font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--navy); margin-bottom: 16px; }
+.about-roles { list-style: none; font-family: var(--font-serif); font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+.about-role { padding: 10px 0; border-bottom: 1px solid var(--linen); }
+.about-role:last-child { border-bottom: none; }
+.about-role strong { color: var(--ink); font-weight: 500; }
+
+/* ── CONTACT ── */
+.contact-lead { font-family: var(--font-serif); font-size: 19px; line-height: 1.55; color: var(--ink-3); max-width: 58ch; margin: 0 0 48px; }
+.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.field { display: flex; flex-direction: column; }
+.field label { font-family: var(--font-sans); font-size: 12px; font-weight: 500; color: var(--ink-2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+.field input, .field textarea {
+  font-family: var(--font-serif); font-size: 17px; color: var(--ink);
+  background: transparent; border: 0; border-bottom: 1px solid var(--ink-3);
+  padding: 8px 0; outline: none; resize: none; width: 100%;
+  transition: border-color 120ms var(--ease-out), padding-bottom 120ms;
+}
+.field input:focus, .field textarea:focus { border-bottom: 2px solid var(--navy); padding-bottom: 7px; }
+.field input::placeholder, .field textarea::placeholder { color: var(--ink-4); }
+.field--full { grid-column: 1 / -1; }
+.form-footer { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
+.form-note { font-family: var(--font-sans); font-size: 13px; color: var(--ink-3); }
+.form-note a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--navy); }
+.form-success { padding: 40px 32px; border: 1px solid var(--ink); background: var(--paper-2); display: none; }
+.form-success h3 { font-family: var(--font-serif); font-size: 22px; color: var(--ink); margin: 0 0 8px; }
+.form-success p { font-family: var(--font-serif); font-size: 16px; color: var(--ink-2); margin: 0; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 32px 0;
+  margin-top: 96px;
+}
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: 16px;
+  font-family: var(--font-sans); font-size: 13px; color: var(--ink-3); letter-spacing: 0.02em;
+}
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { color: var(--ink-3); text-decoration: none; transition: color 120ms; }
+.footer-links a:hover { color: var(--ink); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .case { grid-template-columns: 1fr; gap: 16px; }
+  .case-metric { text-align: left; }
+  .offering { grid-template-columns: 1fr; gap: 12px; }
+  .fit-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-form { grid-template-columns: 1fr; }
+  .form-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .field--full { grid-column: auto; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="logo_transparent.png" alt="Kronthal Research">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#track-record" class="active">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="hero" class="section" style="padding: 120px 0 96px;">
+  <div class="container">
+    <h1 class="hero-h1">Most companies think they understand their customers. <em>They don't.</em></h1>
+    <p class="hero-sub">I help leaders understand who their customers really are, what they actually need, and what to do about it.</p>
+    <p class="hero-kicker">Especially when the cost of guessing wrong is high.</p>
+    <a href="#contact" class="btn">Let's talk →</a>
+  </div>
+</section>
+
+<div id="proof">
+  <div class="container">
+    <div class="proof-inner">
+      <span class="proof-co">Uber</span><span class="proof-dot">·</span>
+      <span class="proof-co">Twitter</span><span class="proof-dot">·</span>
+      <span class="proof-co">Yahoo</span><span class="proof-dot">·</span>
+      <span class="proof-co">Lime</span><span class="proof-dot">·</span>
+      <span class="proof-co">Hinge Health</span><span class="proof-dot">·</span>
+      <span class="proof-co">Gametime</span>
+    </div>
+  </div>
+</div>
+
+<section id="track-record" class="section">
+  <div class="container">
+    <div class="eyebrow">Track Record</div>
+    <h2 class="section-h2">Research that changed the business.</h2>
+    <p class="section-lead">Every engagement is different. The pattern is the same: research that grounds decisions in reality and prevents expensive mistakes.</p>
+    <div class="cases">
+      <article class="case">
+        <div>
+          <div class="case-company">Gametime</div>
+          <div class="case-stage">Series C</div>
+        </div>
+        <div>
+          <h3 class="case-headline">Built research practice from zero; trusted advisor to CEO on AI strategy.</h3>
+          <p class="case-body">Research-driven shift to prioritize buyer confidence helped improve TrustPilot scores from 3.0 to 4.2. Prevented an estimated 12 weeks of wasted engineering time and millions in misdirected marketing spend.</p>
+        </div>
+        <div class="case-metric">
+          <span class="case-metric-num">3.0 → 4.2</span>
+          <span class="case-metric-label">TrustPilot</span>
+        </div>
+      </article>
+      <article class="case">
+        <div>
+          <div class="case-company">Lime</div>
+          <div class="case-stage">Series D</div>
+        </div>
+        <div>
+          <h3 class="case-headline">Founding researcher reporting to President/CPO.</h3>
+          <p class="case-body">Strategic research shifted hardware investment strategy, contributing to Lime's rise from #2 to #1 global market position. Influenced industrial design of the Time Magazine Best Invention-winning LimeGlider. Shaped three successive 6-month roadmap planning cycles.</p>
+        </div>
+        <div class="case-metric">
+          <span class="case-metric-num">#2 → #1</span>
+          <span class="case-metric-label">Global position</span>
+        </div>
+      </article>
+      <article class="case">
+        <div>
+          <div class="case-company">Hinge Health</div>
+          <div class="case-stage">Series E</div>
+        </div>
+        <div>
+          <h3 class="case-headline">Led 7-person research team across mobile, wearable, and AI products.</h3>
+          <p class="case-body">Directed research supporting FDA approval pathway for the Enso pain reduction device and computer vision-powered exercise therapy launch. 1M+ members, 2,000+ enterprise clients.</p>
+        </div>
+        <div class="case-metric">
+          <span class="case-metric-num">FDA</span>
+          <span class="case-metric-label">Approval pathway</span>
+        </div>
+      </article>
+      <article class="case">
+        <div>
+          <div class="case-company">Uber</div>
+          <div class="case-stage">Pre-IPO</div>
+        </div>
+        <div>
+          <h3 class="case-headline">Scaled research organization from 5 to 22 researchers across three product groups.</h3>
+          <p class="case-body">A 2-week, 3-city research sprint directly inspired what became Uber Rewards. Created rider segmentation integrated into Uber's experimentation platform. Achieved 95th percentile team engagement scores.</p>
+        </div>
+        <div class="case-metric">
+          <span class="case-metric-num">5 → 22</span>
+          <span class="case-metric-label">Researchers</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="how-i-help" class="section section--alt">
+  <div class="container">
+    <div class="eyebrow">How I Help</div>
+    <h2 class="section-h2">Three ways I work with teams.</h2>
+    <div>
+      <div class="offering">
+        <div class="offering-num">01</div>
+        <div>
+          <h3 class="offering-title">Reveal what your metrics aren't telling you</h3>
+          <p class="offering-body">Qualitative and mixed-method research that surfaces the blindspots behind your dashboards — the motivations, friction points, and unmet needs that explain what your data can't.</p>
+          <div class="tags">
+            <span class="tag">Discovery research</span><span class="tag">Ethnography</span><span class="tag">Diary studies</span><span class="tag">Journey mapping</span><span class="tag">Behavioral analysis</span>
+          </div>
+        </div>
+      </div>
+      <div class="offering">
+        <div class="offering-num">02</div>
+        <div>
+          <h3 class="offering-title">Make big bets with confidence</h3>
+          <p class="offering-body">Concept testing, customer segmentation, and foundational research that gives your team the direction to prioritize ruthlessly and invest in what actually moves the needle.</p>
+          <div class="tags">
+            <span class="tag">Concept validation</span><span class="tag">Customer segmentation</span><span class="tag">Large-scale surveys</span><span class="tag">Competitive research</span>
+          </div>
+        </div>
+      </div>
+      <div class="offering">
+        <div class="offering-num">03</div>
+        <div>
+          <h3 class="offering-title">Build research that scales with you</h3>
+          <p class="offering-body">From standing up a practice from scratch to elevating an existing team — research operations, stakeholder engagement, and the infrastructure to make insights stick across your org.</p>
+          <div class="tags">
+            <span class="tag">Research ops setup</span><span class="tag">Team hiring</span><span class="tag">Prioritization frameworks</span><span class="tag">Executive engagement</span><span class="tag">Researcher onboarding</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fit" class="section">
+  <div class="container">
+    <div class="eyebrow">Is This Right for You?</div>
+    <h2 class="section-h2">Best fit for companies at an inflection point.</h2>
+    <p class="section-lead">I do my best work with companies that have product-market fit and are ready to deeply understand their customers — but aren't yet sure what the research function should look like.</p>
+    <div class="fit-grid">
+      <div>
+        <div class="fit-label fit-label--good">Great fit</div>
+        <ul class="fit-items">
+          <li class="fit-item"><span class="fit-marker fit-marker--check">✓</span><span>Series B–E with product-market fit and a scaling trajectory</span></li>
+          <li class="fit-item"><span class="fit-marker fit-marker--check">✓</span><span>No existing research function — or one that needs to be rebuilt or elevated</span></li>
+          <li class="fit-item"><span class="fit-marker fit-marker--check">✓</span><span>Complex, expert, or professional users (clinical, financial, technical, legal)</span></li>
+          <li class="fit-item"><span class="fit-marker fit-marker--check">✓</span><span>Leadership that wants to be closer to customers but doesn't yet have the mechanism</span></li>
+          <li class="fit-item"><span class="fit-marker fit-marker--check">✓</span><span>High stakes: health, hardware, AI, or any space where guessing wrong is expensive</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fit-label fit-label--not">Probably not the right fit</div>
+        <ul class="fit-items">
+          <li class="fit-item"><span class="fit-marker fit-marker--dash">—</span><span>Need someone to run usability tests on an existing product — you need a senior IC, not a fractional leader</span></li>
+          <li class="fit-item"><span class="fit-marker fit-marker--dash">—</span><span>Pre-product-market-fit — the research questions are different at that stage</span></li>
+          <li class="fit-item"><span class="fit-marker fit-marker--dash">—</span><span>Research reports to Design with no executive access — research impact requires leadership engagement</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section section--alt">
+  <div class="container--narrow">
+    <div class="eyebrow">About</div>
+    <h2 class="section-h2">Why this, why now.</h2>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>After scaling research teams to 20+ at companies like Uber, Twitter, and Yahoo, I deliberately moved closer to the work. I spent years as a founding researcher at high-growth startups — building practices from zero, conducting the studies that shaped strategy, sitting in the room when decisions were made.</p>
+        <p>That combination is rare: the organizational knowledge of someone who has built 20-person teams, and the craft of someone who still does the research. Fractional work lets me bring both to companies that need both — but aren't ready for a full-time hire at this level.</p>
+        <p>I'm trained as an anthropologist (MA, American University). That matters because your users — whether they're clinicians, engineers, or lawyers — have professional cultures, workflows, and unspoken norms that surveys alone won't reveal. Understanding expert users requires deep, contextual inquiry. That's what anthropology is built for.</p>
+        <p class="about-pull">I'm energized by impact, not research theater.</p>
+      </div>
+      <aside class="about-aside">
+        <div class="about-name">Michael Kronthal</div>
+        <ul class="about-roles">
+          <li class="about-role"><strong>Director, UX Research</strong><br>Gametime · Hinge Health · Lime</li>
+          <li class="about-role"><strong>Director, UX Research</strong><br>Uber · Twitter</li>
+          <li class="about-role"><strong>Head of Global UX Research</strong><br>Yahoo</li>
+          <li class="about-role"><strong>MA, Applied Anthropology</strong><br>American University</li>
+          <li class="about-role"><strong>BA, Anthropology &amp; Sociology</strong><br>Washington &amp; Lee University</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container--contact">
+    <div class="eyebrow">Contact</div>
+    <h2 class="section-h2">Ready to understand your customers?</h2>
+    <p class="contact-lead">I take on 1–2 engagements at a time. Let's find out if this is the right fit.</p>
+    <div id="form-success" class="form-success">
+      <h3>Thank you.</h3>
+      <p>I'll be in touch within two business days.</p>
+    </div>
+    <form id="contact-form" class="contact-form" action="https://formspree.io/f/xpqjyjpn" method="POST">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@company.com" required>
+      </div>
+      <div class="field field--full">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Tell me a little about where you are and what you're trying to figure out." required></textarea>
+      </div>
+      <div class="form-footer">
+        <div class="form-note">Or connect on <a href="https://linkedin.com/in/mkronthal" target="_blank">LinkedIn</a></div>
+        <button type="submit" class="btn">Send →</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>© 2026 Kronthal Research</div>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/mkronthal" target="_blank">linkedin.com/in/mkronthal</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Active nav on scroll
+var sections = ['track-record','about','contact'];
+var navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', function() {
+  var current = 'track-record';
+  sections.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < window.innerHeight * 0.5) current = id;
+  });
+  navLinks.forEach(function(a) {
+    a.classList.remove('active');
+    var href = a.getAttribute('href').replace('#','');
+    if (href === current) a.classList.add('active');
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
